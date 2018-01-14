@@ -9,14 +9,7 @@ class Blizzard::CLI
 
   def list_games
     puts "Blizzard's Games:"
-    puts <<~DOC
-      1. Overwatch
-      2. Hearthstone
-      3. World of Warcraft
-      4. Heroes of the Storm
-      5. Starcraft II
-      6. Diablo III
-    DOC
+    @games = Blizzard::Game.all
   end
 
   def menu

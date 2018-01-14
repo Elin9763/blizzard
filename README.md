@@ -9,6 +9,8 @@
 
 blizzard.com
 
+Games have: name, price, rating, category(i.e: type of game(MMORPG, Shooter, etc))
+
 
 
 ## Installation
