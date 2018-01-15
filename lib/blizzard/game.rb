@@ -1,15 +1,16 @@
 class Blizzard::Game
   attr_accessor :name, :price, :category, :url
+
   def self.all
     #Returns instances of games
-    puts <<~DOC
-      1. Overwatch
-      2. Hearthstone
-      3. World of Warcraft
-      4. Heroes of the Storm
-      5. Starcraft II
-      6. Diablo III
-    DOC
+    #puts <<~DOC
+      #1. Overwatch
+      #2. Hearthstone
+      #3. World of Warcraft
+      #4. Heroes of the Storm
+      #5. Starcraft II
+      #6. Diablo III
+    #DOC
 
     game_1 = self.new
     game_1.name = "Overwatch"
@@ -26,7 +27,7 @@ class Blizzard::Game
     game_3 = self.new
     game_3.name = "World of Warcraft"
     game_3.price = "$50.00"
-    game_2.category = "Massively Multiplayer RPG"
+    game_3.category = "Massively Multiplayer RPG"
     game_3.url = "https://us.shop.battle.net/en-us/product/world-of-warcraft-legion"
 
     game_4 = self.new

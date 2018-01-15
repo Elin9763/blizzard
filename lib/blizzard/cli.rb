@@ -10,6 +10,9 @@ class Blizzard::CLI
   def list_games
     puts "Blizzard's Games:"
     @games = Blizzard::Game.all
+    @games.each.with_index(1) do |games, i|
+      puts "#{i}. #{games.name} - #{games.price} - #{games.category}"
+    end
   end
 
   def menu
@@ -17,23 +20,14 @@ class Blizzard::CLI
     while input != "exit"
       puts "Enter the number of the game you'd like to know about OR type list to see the games again OR type exit to quit:"
       input = gets.strip.downcase
-      case input
-      when "1"
-        puts "You've chosen Overwatch"
-      when "2"
-        puts "You've chosen Hearthstone"
-      when "3"
-        puts "You've chosen World of Warcraft"
-      when "4"
-        puts "You've chosen Heroes of the Storm"
-      when "5"
-        puts "You've chosen Starcraft II"
-      when "6"
-        puts "You've chosen Diablo III"
-      when "list"
+
+      if input.to_i > 0
+        puts @games[input.to_i - 1]
+      elsif input == "list"
         list_games
       else
-        puts "Not an option, type list to go back to game list and choose again"
+        puts "Not an option, please choose again"
+        list_games
       end
     end
   end
