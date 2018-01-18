@@ -7,7 +7,7 @@
 5. Fake Code it
 6. Begin Scraping
 
-blizzard.com
+bestbuy.com
 
 Games have: name, price, rating, category(i.e: type of game(MMORPG, Shooter, etc))
 

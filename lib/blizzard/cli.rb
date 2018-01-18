@@ -21,10 +21,11 @@ class Blizzard::CLI
     input = nil
     while input != "exit"
 
-      input = gets.strip
+      input = gets.strip.downcase
 
       if input.to_i > 0
-        puts @games[input.to_i - 1]
+        game = @games[input.to_i - 1]
+        puts "#{a_game.name} - #{a_game.price} - #{a_game.category}"
       elsif input == "list"
         list_games
       elsif input == "exit"
