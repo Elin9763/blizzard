@@ -4,6 +4,3 @@ require_relative './blizzard/game'
 require 'nokogiri'
 require 'pry'
 require 'open-uri'
-
-require 'rubygems'
-require 'mechanize'

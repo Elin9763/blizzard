@@ -8,6 +8,9 @@ class Blizzard::Game
   def self.scrape_games
     games = []
     games << self.scrape_overwatch
+    games << self.scrape_diabloiii
+    games << self.scrape_world_of_warcraft
+    games << self.scrape_heroes_of_the_storm
     games
   end
 
@@ -19,44 +22,48 @@ class Blizzard::Game
     game.publisher = doc.search("span#publisher-value").text
     game.release_date = doc.search("span#release-date-value").text
     game.price = doc.search("div.pb-hero-price.pb-purchase-price").text
+
     game
 
   end
 
-    #game_1 = self.new
-    #game_1.name = "Overwatch"
-    #game_1.price = "$59.99"
-    #game_1.category = "Team Based Shooter"
-    #game_1.url = "https://us.shop.battle.net/en-us/product/overwatch"
+  def self.scrape_diabloiii
+    doc = Nokogiri::HTML(open("https://www.bestbuy.com/site/diablo-iii-battle-chest-macwindows-digital-download/5823033.p?skuId=5823033"))
 
-    #game_2 = self.new
-    #game_2.name = "Hearthstone"
-    #game_2.price = "Free to Play"
-    #game_2.category = "Strategy Card Game"
-    #game_2.url = "https://us.shop.battle.net/en-us/product/hearthstone-heroes-of-warcraft"
+    game = self.new
+    game.name = doc.search("h1.type-subhead-alt-regular").text
+    game.publisher = doc.search("span#publisher-value").text
+    game.release_date = doc.search("span#release-date-value").text
+    game.price = doc.search("div.pb-hero-price.pb-purchase-price").text
 
-    #game_3 = self.new
-    #game_3.name = "World of Warcraft"
-    #game_3.price = "$50.00"
-    #game_3.category = "Massively Multiplayer RPG"
-    #game_3.url = "https://us.shop.battle.net/en-us/product/world-of-warcraft-legion"
+    game
 
-    #game_4 = self.new
-    #game_4.name = "Heroes of the Storm"
-    #game_4.price = "Free to Play"
-    #game_4.category = "MOBA"
-    #game_4.url = "https://us.shop.battle.net/en-us/product/heroes-of-the-storm"
+  end
 
-    #game_5 = self.new
-    #game_5.name = "Starcraft II"
-    #game_5.price = "$39.99"
-    #game_5.category = "Real-Time Strategy"
-    #game_5.url = "https://us.shop.battle.net/en-us/product/starcraft-ii-campaign-collection"
+  def self.scrape_world_of_warcraft
+    doc = Nokogiri::HTML(open("https://www.bestbuy.com/site/world-of-warcraft-legion-windows/4712900.p?skuId=4712900"))
 
-    #game_6 = self.new
-    #game_6.name = "Diablo III"
-    #game_6.price = "$29.99"
-    #game_6.category = "Action RPG"
-    #game_6.url = "https://us.shop.battle.net/en-us/product/diablo-iii-battle-chest"
+    game = self.new
+    game.name = doc.search("h1.type-subhead-alt-regular").text
+    game.publisher = doc.search("span#publisher-value").text
+    game.release_date = doc.search("span#release-date-value").text
+    game.price = doc.search("div.pb-hero-price.pb-purchase-price").text
+
+    game
+
+  end
+
+  def self.scrape_heroes_of_the_storm
+    doc = Nokogiri::HTML(open("https://www.bestbuy.com/site/heroes-of-the-storm-starter-pack-windowsmac/8012069.p?skuId=8012069"))
+
+    game = self.new
+    game.name = doc.search("h1.type-subhead-alt-regular").text
+    game.publisher = doc.search("span#publisher-value").text
+    game.release_date = doc.search("span#release-date-value").text
+    game.price = doc.search("div.pb-hero-price.pb-purchase-price").text
+
+    game
+
+  end
 
 end
