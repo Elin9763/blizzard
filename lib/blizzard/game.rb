@@ -1,5 +1,5 @@
 class Blizzard::Game
-  attr_accessor :name, :price, :publisher, :url
+  attr_accessor :name, :publisher, :release_date, :price
 
   def self.all
     self.scrape_games
@@ -12,10 +12,14 @@ class Blizzard::Game
   end
 
   def self.scrape_overwatch
-    doc = Nokogiri::HTML(open(""))
-    binding.pry
+    doc = Nokogiri::HTML(open("https://www.bestbuy.com/site/overwatch-game-of-the-year-edition-windows/5891900.p?skuId=5891900"))
 
-
+    game = self.new
+    game.name = doc.search("h1.type-subhead-alt-regular").text
+    game.publisher = doc.search("span#publisher-value").text
+    game.release_date = doc.search("span#release-date-value").text
+    game.price = doc.search("div.pb-hero-price.pb-purchase-price").text
+    game
 
   end
 

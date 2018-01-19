@@ -2,7 +2,6 @@
 class Blizzard::CLI
 
   def call
-    system("clear")
     list_games
     menu
     goodbye
@@ -12,7 +11,7 @@ class Blizzard::CLI
     puts "Blizzard's Games:"
     @games = Blizzard::Game.all
     @games.each.with_index(1) do |games, i|
-      puts "#{i}. #{games.name} - #{games.price} - #{games.category}"
+      puts "#{i}. #{games.name} - #{games.publisher} - #{games.release_date} - #{games.price}"
     end
   end
 
@@ -25,7 +24,7 @@ class Blizzard::CLI
 
       if input.to_i > 0
         game = @games[input.to_i - 1]
-        puts "#{a_game.name} - #{a_game.price} - #{a_game.category}"
+        puts "#{game.name} - #{game.publisher} - #{game.release_date} - #{game.price}"
       elsif input == "list"
         list_games
       elsif input == "exit"
