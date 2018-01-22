@@ -8,11 +8,18 @@ class Blizzard::CLI
   end
 
   def list_games
-    puts "Blizzard's Games:"
+    puts "_________________________________________________________________________________________________________________"
+    puts "|                                             Blizzard Games:                                                   |"
+    puts "|                                                                                                               |"
+    puts "|                                                                                                               |"
+    puts "|                                                                                                               |"
+    puts "|                                                                                                               |"
     @games = Blizzard::Game.all
     @games.each.with_index(1) do |games, i|
-      puts "#{i}. #{games.name} - #{games.publisher} - #{games.release_date} - #{games.price}"
+      puts "|#{i}. #{games.name} - #{games.publisher} - #{games.release_date} - #{games.price}|"
+    puts "|---------------------------------------------------------------------------------------------------------------|"
     end
+    puts "_________________________________________________________________________________________________________________"
   end
 
   def menu
