@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
-require "blizzard"
+require_relative '../lib/blizzard.rb'
 
 Blizzard::CLI.new.call

@@ -1,4 +1,5 @@
 #The Controller, user interactions
+
 class Blizzard::CLI
 
   def call
@@ -14,9 +15,9 @@ class Blizzard::CLI
     puts "|                                                                                                               |"
     puts "|                                                                                                               |"
     puts "|                                                                                                               |"
-    @games = Blizzard::Game.all
-    @games.each.with_index(1) do |games, i|
-      puts "|#{i}. #{games.name}"
+    @game = Blizzard::Game.all
+    @game.each.with_index(1) do |game, i|
+      puts "|#{i}. #{game.name}"
     puts "|---------------------------------------------------------------------------------------------------------------|"
     end
     puts " _______________________________________________________________________________________________________________"
@@ -26,10 +27,10 @@ class Blizzard::CLI
     puts "Enter the number of the game you'd like to know about OR type list to see the games again OR type exit to quit:"
     input = nil
     while input != "exit"
-    input = gets.strip.downcase
+    input = gets.strip
 
       if input.to_i > 0
-        game = @games[input.to_i - 1]
+        game = @game[input.to_i - 1]
         puts "#{game.name} - #{game.publisher} - #{game.release_date} - #{game.price}"
       elsif input == "list"
         list_games
@@ -39,6 +40,7 @@ class Blizzard::CLI
       end
     end
   end
+
 
   def goodbye
     puts "Please come again!"
