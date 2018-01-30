@@ -8,7 +8,7 @@ class Blizzard::CLI
   end
 
   def list_games
-    puts "_________________________________________________________________________________________________________________"
+    puts " _______________________________________________________________________________________________________________"
     puts "|                                             Blizzard Games:                                                   |"
     puts "|                                                                                                               |"
     puts "|                                                                                                               |"
@@ -16,18 +16,17 @@ class Blizzard::CLI
     puts "|                                                                                                               |"
     @games = Blizzard::Game.all
     @games.each.with_index(1) do |games, i|
-      puts "|#{i}. #{games.name} - #{games.publisher} - #{games.release_date} - #{games.price}|"
+      puts "|#{i}. #{games.name}"
     puts "|---------------------------------------------------------------------------------------------------------------|"
     end
-    puts "_________________________________________________________________________________________________________________"
+    puts " _______________________________________________________________________________________________________________"
   end
 
   def menu
     puts "Enter the number of the game you'd like to know about OR type list to see the games again OR type exit to quit:"
     input = nil
     while input != "exit"
-
-      input = gets.strip.downcase
+    input = gets.strip.downcase
 
       if input.to_i > 0
         game = @games[input.to_i - 1]
